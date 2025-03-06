@@ -20,6 +20,9 @@ spec:
         - name: DT_MAX_DEPTH # identifier local to this workflow
   templates:
   - name: mypipeline
+    metadata:
+      labels:
+            ai.sap.com/resourcePlan: starter  
     steps:
     - - name: mypredictor
         template: mycodeblock1
@@ -30,7 +33,7 @@ spec:
         - name: housedataset # a name for the placeholder
           path: /app/data/ # where to copy in the Dataset in the Docker image
     container:
-      image: docker.io/<YOUR_DOCKER_USERNAME>/house-price:03 # Your docker image name
+      image: docker.io/dollardigital/house-price:03 # Your docker image name
       command: ["/bin/sh", "-c"]
       env:
         - name: DT_MAX_DEPTH # name of the environment variable inside Docker container
